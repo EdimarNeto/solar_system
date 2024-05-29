@@ -49,10 +49,12 @@ while True:
 
     # Draw trajectories
     for i in trajectories:
+        orbit = []
         for angle in range(0, 360, 10):
             traj_x = 500 + i["distance"] * pygame.math.Vector2(1,0).rotate(angle).x
             traj_y = 400 + i["distance"] * pygame.math.Vector2(1,0).rotate(angle).y
-            pygame.draw.circle(screen, i["color"], (int(traj_x), int(traj_y)), 2)
+            orbit.append((int(traj_x), int(traj_y)))
+        pygame.draw.lines(screen, i["color"], True, orbit, 1)
 
     pygame.display.flip()
     clock.tick(60)
